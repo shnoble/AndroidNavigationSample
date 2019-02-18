@@ -3,9 +3,13 @@ package com.daya.navigation.sample
 import android.content.res.Resources
 import android.os.Bundle
 import android.util.Log
+import android.view.Menu
+import android.view.MenuItem
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.ui.onNavDestinationSelected
 
 
 class MainActivity : AppCompatActivity() {
@@ -28,5 +32,18 @@ class MainActivity : AppCompatActivity() {
                 Toast.LENGTH_SHORT).show()
             Log.d("NavigationActivity", "Navigated to $dest")
         }
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        if (menu != null) {
+            menuInflater.inflate(R.menu.overflow_menu, menu)
+            return true
+        }
+        return super.onCreateOptionsMenu(menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem?): Boolean {
+        return item?.onNavDestinationSelected(findNavController(R.id.nav_host_fragment))
+            ?: super.onOptionsItemSelected(item)
     }
 }

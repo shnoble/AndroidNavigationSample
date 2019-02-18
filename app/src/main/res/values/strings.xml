@@ -11,4 +11,5 @@
     <string name="navigate_action_button">Navigate with action</string>
     <string name="step_two">Step Two</string>
     <string name="finish_button">Finish Flow</string>
+    <string name="settings">Settings</string>
 </resources>

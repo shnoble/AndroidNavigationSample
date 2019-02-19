@@ -52,4 +52,9 @@
               android:label="fragment_settings"
               tools:layout="@layout/fragment_settings"/>
 
+    <fragment android:id="@+id/deeplink_dest"
+              android:name="com.daya.navigation.sample.DeepLinkFragment"
+              android:label="fragment_deep_link"
+              tools:layout="@layout/fragment_deep_link"/>
+
 </navigation>

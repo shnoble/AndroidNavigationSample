@@ -7,9 +7,12 @@ import android.view.Menu
 import android.view.MenuItem
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.navigation.NavController
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.onNavDestinationSelected
+import androidx.navigation.ui.setupWithNavController
+import kotlinx.android.synthetic.main.activity_main.*
 
 
 class MainActivity : AppCompatActivity() {
@@ -22,6 +25,9 @@ class MainActivity : AppCompatActivity() {
             .findFragmentById(R.id.nav_host_fragment) as NavHostFragment? ?: return
 
         val navController = hostFragment.navController
+
+        setupBottomNavMenu(navController)
+
         navController.addOnDestinationChangedListener { _, destination, _ ->
             val dest: String = try {
                 resources.getResourceName(destination.id)
@@ -32,6 +38,10 @@ class MainActivity : AppCompatActivity() {
                 Toast.LENGTH_SHORT).show()
             Log.d("NavigationActivity", "Navigated to $dest")
         }
+    }
+
+    private fun setupBottomNavMenu(navController: NavController) {
+        bottom_nav_view?.setupWithNavController(navController)
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
